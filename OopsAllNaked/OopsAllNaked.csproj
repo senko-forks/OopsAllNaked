@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Dalamud.NET.Sdk/12.0.2">
+<Project Sdk="Dalamud.NET.Sdk/13.0.0">
     <PropertyGroup>
-        <Version>2.0.2.6</Version>
+        <Version>2.0.2.7</Version>
         <Description>Turn everyone around you into a nudist.</Description>
         <Copyright></Copyright>
         <PackageProjectUrl>https://github.com/senko-forks/OopsAllNaked</PackageProjectUrl>
@@ -10,6 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Penumbra.Api" Version="5.6.0" />
+        <PackageReference Include="Penumbra.Api" Version="5.10.0" />
     </ItemGroup>
 </Project>
