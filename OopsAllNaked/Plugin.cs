@@ -32,6 +32,7 @@ namespace OopsAllNaked
             _ = pluginInterface.Create<Service>();
             Service.plugin = this;
             Service.penumbraApi = new PenumbraIpc(pluginInterface);
+            Service.syncedPlayerIpc = new SyncedPlayerIpc(pluginInterface);
             Service.configWindow = new ConfigWindow(this);
             Service.whitelistWindow = new WhitelistWindow(this);
             WindowSystem.AddWindow(Service.configWindow);

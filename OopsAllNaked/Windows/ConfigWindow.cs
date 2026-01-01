@@ -31,7 +31,7 @@ internal class ConfigWindow : Window
         ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
         ImGuiWindowFlags.NoScrollWithMouse)
     {
-        Size = new Vector2(285, 450);
+        Size = new Vector2(285, 475);
         SizeCondition = ImGuiCond.Always;
 
         configuration = Service.configuration;
@@ -204,6 +204,16 @@ internal class ConfigWindow : Window
                 InvokeConfigChanged(true);
         }
         Tooltip("Warning: Altering NPCs will cause animation issues.");
+
+        bool _skipSyncedPlayers = configuration.SkipSyncedPlayers;
+        if (ImGui.Checkbox("Skip synced/paired players", ref _skipSyncedPlayers))
+        {
+            configuration.SkipSyncedPlayers = _skipSyncedPlayers;
+            configuration.Save();
+            if (configuration.enabled)
+                InvokeConfigChanged();
+        }
+        Tooltip("Do not apply changes to players paired via known sync plugins");
 
         ImGui.Separator();
         bool _stripHats = configuration.stripHats;

@@ -14,10 +14,12 @@ internal class Service
     internal static Configuration configuration { get; set; } = null!;
     internal static Drawer drawer { get; set; } = null!;
     public static PenumbraIpc penumbraApi { get; set; } = null!;
+    public static SyncedPlayerIpc syncedPlayerIpc { get; set; } = null!;
     [PluginService] public static IDalamudPluginInterface pluginInterface { get; set; } = null!;
     [PluginService] public static IChatGui chatGui { get; private set; } = null!;
     [PluginService] public static IClientState clientState { get; private set; } = null!;
     [PluginService] public static ICommandManager commandManager { get; private set; } = null!;
+    [PluginService] public static IFramework framework { get; private set; } = null!;
     [PluginService] public static IObjectTable objectTable { get; private set; } = null!;
     [PluginService] public static ITargetManager targetManager { get; private set; } = null!;
 

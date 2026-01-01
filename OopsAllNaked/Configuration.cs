@@ -33,6 +33,7 @@ namespace OopsAllNaked
         public bool empLegs { get; set; } = false;
 
         public SortedSet<string> Whitelist { get; set; } = new(StringComparer.Ordinal);
+        public bool SkipSyncedPlayers { get; set; } = false;
 
         // the below exist just to make saving less cumbersome
         [NonSerialized]

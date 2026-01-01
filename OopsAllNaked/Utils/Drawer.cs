@@ -28,10 +28,16 @@ namespace OopsAllNaked.Utils
         {
             Plugin.OutputChatLine("Refreshing all players");
 
+            if (Service.configuration.SkipSyncedPlayers)
+                Service.syncedPlayerIpc.Update();
+            else
+                Service.syncedPlayerIpc.Clear();
+
             foreach (var obj in Service.objectTable)
             {
                 if (!obj.IsValid()) continue;
                 if (obj is not ICharacter) continue;
+                if (Service.configuration.SkipSyncedPlayers && Service.syncedPlayerIpc.IsHandledAddress(obj.Address)) continue;
                 if (Service.configuration.IsWhitelisted(obj.Name.TextValue)) continue;
 
                 bool isPc = obj is IPlayerCharacter;
@@ -93,6 +99,14 @@ namespace OopsAllNaked.Utils
 
             dontStrip |= Service.configuration.dontStripPC && isPc && !isSelf;
             dontStrip |= Service.configuration.dontStripNPC && !isPc;
+
+            if (Service.configuration.SkipSyncedPlayers)
+                Service.syncedPlayerIpc.Update();
+            else
+                Service.syncedPlayerIpc.Clear();
+
+            if (Service.configuration.SkipSyncedPlayers && Service.syncedPlayerIpc.IsHandledAddress(gameObjectAddress))
+                return;
 
             if (Service.configuration.IsWhitelisted(charName))
                 return;
